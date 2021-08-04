@@ -1,0 +1,37 @@
+@model BookViewModel;
+
+<div class="w-52">
+    <div class="mb-2 overflow-hidden">
+        <div class="aspect-h-12 aspect-w-8 w-48">
+            <img class="object-cover object-center" src="@Model.PhotoUrl"  alt="" />
+        </div>
+    </div>
+    <div>
+        <a asp-controller="Book" asp-action="BookDetail" asp-route-bookId="@Model.Id" class="inline-block mb-1 font-semibold leading-5 hover:underline hover:text-gray-900">@Model.Title</a><br />
+        <span>
+            @Model.Author<br/>
+                         <span>
+                             @for (int i = 1; i <= Model.Rating; i++)
+                             {
+                                 <i class="fas fa-star" style="color:orange"></i>
+                             }
+                             @for (int j = Model.Rating + 1; j <= 5; j++)
+                             {
+                                 <i class="fas fa-star"></i>
+                             }
+
+                            
+                   
+                          
+                         </span>
+            </span>
+         @if (@Model.Availability)
+        {
+            <p>Available</p>
+        }
+        else
+        {
+            <p>Unavailable</p>
+        } 
+    </div>
+</div>
